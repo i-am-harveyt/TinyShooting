@@ -5,10 +5,6 @@ from Codes.Foe import Foe
 
 def game_play(SCREEN, WIDTH, HEIGHT):
 
-    gameCLOCK = pygame.time.Clock()
-    currentTime = gameCLOCK.get_time()
-    foeCurrent = 0
-
     BLACK = (25, 25, 25)
 
     player = Player(posX=50, posY=20+HEIGHT//2)
@@ -25,6 +21,19 @@ def game_play(SCREEN, WIDTH, HEIGHT):
     fireBallGroup = pygame.sprite.Group()
 
     shootingKey = [pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_RIGHT]
+
+    # Add a countdown before play
+    countDownCLOCK = pygame.time.Clock()
+    currentCountDown = 0
+    while True:
+        currentCountDown += 1
+        if currentCountDown >= 3600:
+            break
+        countDownCLOCK.tick(120)
+
+    gameCLOCK = pygame.time.Clock()
+    currentTime = gameCLOCK.get_time()
+    foeCurrent = 0
 
     running = True
     while running:
