@@ -27,9 +27,9 @@ class Foe(pygame.sprite.Sprite):
         # elif player.posX < self.posX:
         #     self.posX -= 8
         if player.posY > self.posY:
-            self.posY += 3
+            self.posY += 8
         elif player.posY < self.posY:
-            self.posY -= 3
+            self.posY -= 8
 
         self.rect.center = (self.posX, self.posY)
 

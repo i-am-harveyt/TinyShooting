@@ -21,13 +21,13 @@ class Fireball(pygame.sprite.Sprite):
 
     def fly(self, fireBallGroup, WIDTH, HEIGHT):
         if self.direction == 0:  # right
-            self.posX += 40
+            self.posX += 25
         if self.direction == 1:  # up
-            self.posY -= 40
+            self.posY -= 25
         if self.direction == 2:  # left
-            self.posX -= 40
+            self.posX -= 25
         if self.direction == 3:  # down
-            self.posY += 40
+            self.posY += 25
         self.rect.center = (self.posX, self.posY)
         return self.distroy(fireBallGroup, WIDTH, HEIGHT)
 

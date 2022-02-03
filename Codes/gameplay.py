@@ -11,13 +11,18 @@ def game_play(
     del events
 
     BLACK = (25, 25, 25)
-    playerSize, foeSize, fireballSize = 50, 50, 30
+    RED = (220, 0, 0)
+    WHITE = (220, 220, 220)
 
-    player = Player(posX=50, posY=20+SCREEN_HEIGHT//2, playerSize=playerSize)
+    playerSize, foeSize, fireballSize = 50, 50, 30
+    healthBarWidth = 200
+    healthBarHeight = 50
+
+    player = Player(posX=50, posY=50+SCREEN_HEIGHT//2, playerSize=playerSize)
     playerGroup = pygame.sprite.Group()
     playerGroup.add(player)
 
-    foe = Foe(posX=SCREEN_WIDTH-50, posY=20+SCREEN_HEIGHT//2, foeSize=foeSize)
+    foe = Foe(posX=SCREEN_WIDTH-50, posY=50+SCREEN_HEIGHT//2, foeSize=foeSize)
     foeGroup = pygame.sprite.Group()
     foeGroup.add(foe)
 
@@ -99,17 +104,18 @@ def game_play(
         # deal with the rendering
         pygame.display.flip()
         SCREEN.fill(BLACK)
-        # render the heart(s)
-        for i in range(player.maxHealth):
-            if i <= player.health-1:
-                SCREEN.blit(heart, (0+20*i, 0))
-            else:
-                SCREEN.blit(emptyHeart, (0+20*i, 0))
-        for i in range(foe.maxHealth):
-            if i <= foe.health-1:
-                SCREEN.blit(heart, (SCREEN_WIDTH-20*foe.maxHealth+20*i, 0))
-            else:
-                SCREEN.blit(emptyHeart, (SCREEN_WIDTH-20*foe.maxHealth+20*i, 0))
+
+        # render the health bar
+        pygame.draw.rect(SCREEN, WHITE, pygame.Rect(50, 0, healthBarWidth, healthBarHeight), 0)
+        pygame.draw.rect(SCREEN, RED, pygame.Rect(
+            50, 0, healthBarWidth*player.health//player.maxHealth, healthBarHeight), 0)
+
+        pygame.draw.rect(SCREEN, WHITE, pygame.Rect(
+            SCREEN_WIDTH-healthBarWidth-50, 0, healthBarWidth, healthBarHeight), 0)
+        pygame.draw.rect(SCREEN, RED, pygame.Rect(
+            SCREEN_WIDTH-healthBarWidth-50, 0, 
+            healthBarWidth*foe.health//foe.maxHealth, healthBarHeight), 0)
+
         playerGroup.draw(SCREEN)
         foeGroup.draw(SCREEN)
         fireBallGroup.draw(SCREEN)
@@ -117,7 +123,7 @@ def game_play(
             pygame.transform.scale(SCREEN, (WINDOW_WIDTH, WINDOW_HEIGHT)),
             (0, 0)
         )
-        gameCLOCK.tick(120)
+        gameCLOCK.tick(150)
 
     if player.health <= 0:
         return False
