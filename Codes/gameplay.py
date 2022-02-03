@@ -5,6 +5,10 @@ from Codes.Foe import Foe
 
 def game_play(SCREEN, WIDTH, HEIGHT):
 
+    # use this to block events
+    events = pygame.event.get()
+    del events
+
     BLACK = (25, 25, 25)
 
     player = Player(posX=50, posY=20+HEIGHT//2)
@@ -38,7 +42,8 @@ def game_play(SCREEN, WIDTH, HEIGHT):
                 if event.key == pygame.K_ESCAPE:
                     running = False
                 elif event.key in shootingKey:
-                    fireBallGroup = player.attack(keyPressed=event.key, fireBallGroup=fireBallGroup)
+                    fireBallGroup = player.attack(
+                        keyPressed=event.key, fireBallGroup=fireBallGroup)
 
         # detect player's movement
         keyPressed = pygame.key.get_pressed()
@@ -75,7 +80,8 @@ def game_play(SCREEN, WIDTH, HEIGHT):
         # for foes' move and attack
         for enemy in foeGroup:
             enemy.move(player)
-            fireBallGroup, foeCurrent = enemy.detectAttack(fireBallGroup, foeCurrent, player)
+            fireBallGroup, foeCurrent = enemy.detectAttack(
+                fireBallGroup, foeCurrent, player)
 
 
         # get time
