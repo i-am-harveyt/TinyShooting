@@ -6,6 +6,16 @@
 
 與對方交火，贏得勝利吧！
 
+## Requirement
+
+Pygame
+
+若你尚未下載 Pygame，在終端機輸入：
+
+```bash
+pip install pygame
+```
+
 ## 規則
 
 按 Enter\(Return\) 鍵開始遊戲，在遊戲中可按 Esc 鍵返回主菜單。
