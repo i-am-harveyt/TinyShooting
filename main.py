@@ -19,7 +19,7 @@ if __name__ == "__main__":
                 exit()
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
-                    countDown()
+                    countDown(SCREEN)
                     game_play(SCREEN, WIDTH, HEIGHT)
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
