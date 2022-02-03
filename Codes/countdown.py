@@ -3,16 +3,17 @@ import pygame
 
 def countdown(SCREEN):
     countDownCLOCK = pygame.time.Clock()
-    currentImage = -479
+    currentImage = 0
+    images = [
+        pygame.image.load("Graphics/Countdown3.png").convert_alpha(),
+        pygame.image.load("Graphics/Countdown2.png").convert_alpha(),
+        pygame.image.load("Graphics/Countdown1.png").convert_alpha()
+        ]
     while True:
-        if currentImage >= -120:
+        if currentImage > 2:
             break
-        SCREEN.blit(
-            pygame.image.load(
-                f"Graphics/Countdown{abs(currentImage)//120}.png").convert(), 
-                (0, 0)
-                )
         pygame.display.flip()
+        SCREEN.blit(images[currentImage])
         currentImage += 1
 
-        countDownCLOCK.tick(120)
+        countDownCLOCK.tick(1)
