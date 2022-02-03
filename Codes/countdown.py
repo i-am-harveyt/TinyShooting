@@ -10,10 +10,11 @@ def countdown(SCREEN):
         pygame.image.load("Graphics/Countdown1.png").convert_alpha()
         ]
     while True:
-        if currentImage > 2:
+        if currentImage == 3:
             break
+
+        SCREEN.blit(images[currentImage], (0, 0))
         pygame.display.flip()
-        SCREEN.blit(images[currentImage])
         currentImage += 1
 
         countDownCLOCK.tick(1)
