@@ -21,7 +21,7 @@ class Player(pygame.sprite.Sprite):
 
     def move(self, keyPressed, WIDTH, HEIGHT):
         if keyPressed[pygame.K_w]:
-            if self.posY > 15:
+            if self.posY > 20 + 15:
                 self.posY -= 3
         if keyPressed[pygame.K_s]:
             if self.posY < HEIGHT - 15:

@@ -11,11 +11,11 @@ def game_play(SCREEN, WIDTH, HEIGHT):
 
     BLACK = (25, 25, 25)
 
-    player = Player(posX=50, posY=HEIGHT//2)
+    player = Player(posX=50, posY=20+HEIGHT//2)
     playerGroup = pygame.sprite.Group()
     playerGroup.add(player)
 
-    foe = Foe(posX=WIDTH-50, posY=HEIGHT//2)
+    foe = Foe(posX=WIDTH-50, posY=20+HEIGHT//2)
     foeGroup = pygame.sprite.Group()
     foeGroup.add(foe)
 

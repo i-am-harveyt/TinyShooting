@@ -1,14 +1,14 @@
 import pygame
 from Codes.gameplay import game_play
 
-WIDTH, HEIGHT = 800, 600
+WIDTH, HEIGHT = 800, 620
 BLACK = (25, 25, 25)
 
 pygame.init()
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Shooting Game!")
 CLOCK = pygame.time.Clock()
-TOPIC = pygame.image.load("Graphics/TOPIC.jpeg").convert_alpha()
+TOPIC = pygame.image.load("Graphics/TOPIC.png").convert_alpha()
 
 if __name__ == "__main__":
     while True:
