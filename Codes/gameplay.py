@@ -67,6 +67,7 @@ def game_play(SCREEN, WIDTH, HEIGHT):
                             foeGroup = enemy.die(foeGroup)
                         fireball.kill()
                         del fireball
+                        break
 
         if len(playerGroup) == 0 or len(foeGroup) == 0:
                 running = False
