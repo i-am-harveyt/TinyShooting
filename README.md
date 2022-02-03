@@ -1,4 +1,4 @@
-# Shooting Game!
+# TinyShooting!
 
 ## Intro
 
@@ -26,4 +26,4 @@ pip install pygame
 
 WASD，你熟悉的上下左右移動方式。
 
-方向鍵上下左右，你往哪個方向開火。# TinyShooting
+方向鍵上下左右，你往哪個方向開火。
