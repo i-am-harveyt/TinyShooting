@@ -10,12 +10,18 @@ def game_play(SCREEN, WIDTH, HEIGHT):
     foeCurrent = 0
 
     BLACK = (25, 25, 25)
+
     player = Player(posX=50, posY=HEIGHT//2)
-    foe = Foe(posX=WIDTH-50, posY=HEIGHT//2)
     playerGroup = pygame.sprite.Group()
     playerGroup.add(player)
+
+    foe = Foe(posX=WIDTH-50, posY=HEIGHT//2)
     foeGroup = pygame.sprite.Group()
     foeGroup.add(foe)
+
+    heart = pygame.image.load("Graphics/Heart.png").get_alpha()
+    emptyHeart = pygame.image.load("Graphics/EmptyHeart.png").get_alpha()
+
     fireBallGroup = pygame.sprite.Group()
 
     shootingKey = [pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_RIGHT]
@@ -83,6 +89,17 @@ def game_play(SCREEN, WIDTH, HEIGHT):
         for enemy in foeGroup:
             if currentTime - enemy.hurtTime >= 0.2:
                 enemy.renew()
+
+        # render the heart(s)
+        for i in range(5):
+            if i <= player.health:
+                pass
+            else:
+                pass
+            if i <= foe.health:
+                pass
+            else:
+                pass
 
         # deal with the rendering
         pygame.display.flip()
