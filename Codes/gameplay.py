@@ -27,9 +27,10 @@ def game_play(SCREEN, WIDTH, HEIGHT):
     currentCountDown = 0
     while True:
         currentCountDown += 1
-        if currentCountDown >= 3600:
+        if currentCountDown >= 360:
             break
         countDownCLOCK.tick(120)
+    del countDownCLOCK, currentCountDown
 
     gameCLOCK = pygame.time.Clock()
     currentTime = gameCLOCK.get_time()
