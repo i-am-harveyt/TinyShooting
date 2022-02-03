@@ -22,16 +22,6 @@ def game_play(SCREEN, WIDTH, HEIGHT):
 
     shootingKey = [pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_RIGHT]
 
-    # Add a countdown before play
-    countDownCLOCK = pygame.time.Clock()
-    currentCountDown = 0
-    while True:
-        currentCountDown += 1
-        if currentCountDown >= 360:
-            break
-        countDownCLOCK.tick(120)
-    del countDownCLOCK, currentCountDown
-
     gameCLOCK = pygame.time.Clock()
     currentTime = gameCLOCK.get_time()
     foeCurrent = 0
