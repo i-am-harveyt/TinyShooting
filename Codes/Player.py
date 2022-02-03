@@ -9,7 +9,8 @@ class Player(pygame.sprite.Sprite):
     def __init__(self, posX, posY):
         super().__init__()
         self.size = (30, 30)
-        self.health = 10
+        self.maxHealth = 5
+        self.health = 5
         self.posX = posX
         self.posY = posY
         self.image = pygame.Surface(self.size)

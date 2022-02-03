@@ -94,15 +94,16 @@ def game_play(SCREEN, WIDTH, HEIGHT):
         pygame.display.flip()
         SCREEN.fill(BLACK)
         # render the heart(s)
-        for i in range(10):
+        for i in range(player.maxHealth):
             if i <= player.health-1:
                 SCREEN.blit(heart, (0+20*i, 0))
             else:
                 SCREEN.blit(emptyHeart, (0+20*i, 0))
+        for i in range(foe.maxHealth):
             if i <= foe.health-1:
-                SCREEN.blit(heart, (WIDTH-200+20*i, 0))
+                SCREEN.blit(heart, (WIDTH-20*foe.maxHealth+20*i, 0))
             else:
-                SCREEN.blit(emptyHeart, (WIDTH-200+20*i, 0))
+                SCREEN.blit(emptyHeart, (WIDTH-20*foe.maxHealth+20*i, 0))
         playerGroup.draw(SCREEN)
         foeGroup.draw(SCREEN)
         fireBallGroup.draw(SCREEN)
