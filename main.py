@@ -8,6 +8,7 @@ pygame.init()
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Shooting Game!")
 CLOCK = pygame.time.Clock()
+TOPIC = pygame.image.load("Graphics/TOPIC.jpeg").convert_alpha()
 
 if __name__ == "__main__":
     while True:
@@ -22,7 +23,7 @@ if __name__ == "__main__":
                     pygame.quit()
                     exit()
 
-        SCREEN.fill(BLACK)
         pygame.display.flip()
+        SCREEN.blit(TOPIC, (0, 0))
         CLOCK.tick(120)
 
