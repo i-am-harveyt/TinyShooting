@@ -69,12 +69,7 @@ def game_play(SCREEN, WIDTH, HEIGHT):
                         del fireball
 
         if len(playerGroup) == 0 or len(foeGroup) == 0:
-            if len(playerGroup) == 0:
-                print("You Lose!")
-            else:
-                print("You Win!")
-            pygame.time.wait(2000)
-            running = False
+                running = False
 
         # for foes' move and attack
         for enemy in foeGroup:
@@ -108,4 +103,9 @@ def game_play(SCREEN, WIDTH, HEIGHT):
         foeGroup.draw(SCREEN)
         fireBallGroup.draw(SCREEN)
         gameCLOCK.tick(120)
+
+    if player.health <= 0:
+        return False
+    else:
+        return True
 

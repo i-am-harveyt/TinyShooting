@@ -78,7 +78,6 @@ class Foe(pygame.sprite.Sprite):
     def die(self, selfGroup):
         selfGroup.remove(self)
         self.kill()
-        del self
 
         return selfGroup
 

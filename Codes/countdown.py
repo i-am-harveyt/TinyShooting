@@ -1,7 +1,7 @@
 import pygame
 
 
-def countDown(SCREEN):
+def countdown(SCREEN):
     countDownCLOCK = pygame.time.Clock()
     currentImage = 3
     while True:

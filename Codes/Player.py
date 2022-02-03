@@ -63,7 +63,6 @@ class Player(pygame.sprite.Sprite):
         self.kill()
         self.posX = -100
         self.posY = -100
-        del self
 
         return playerGroup
 
