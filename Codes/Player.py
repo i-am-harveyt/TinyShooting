@@ -6,9 +6,9 @@ RED = (255, 0, 0)
 
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, posX, posY):
+    def __init__(self, posX, posY, playerSize):
         super().__init__()
-        self.size = (30, 30)
+        self.size = (playerSize, playerSize)
         self.maxHealth = 5
         self.health = 5
         self.posX = posX
@@ -36,15 +36,15 @@ class Player(pygame.sprite.Sprite):
 
         self.rect.center = (self.posX, self.posY)
 
-    def attack(self, keyPressed, fireBallGroup):
+    def attack(self, keyPressed, fireBallGroup, fireballSize):
         if keyPressed == pygame.K_RIGHT:
-            fireBallGroup.add(Fireball(self.posX, self.posY, 0, "Player"))
+            fireBallGroup.add(Fireball(self.posX, self.posY, 0, "Player", fireballSize))
         elif keyPressed == pygame.K_UP:
-            fireBallGroup.add(Fireball(self.posX, self.posY, 1, "Player"))
+            fireBallGroup.add(Fireball(self.posX, self.posY, 1, "Player", fireballSize))
         elif keyPressed == pygame.K_LEFT:
-            fireBallGroup.add(Fireball(self.posX, self.posY, 2, "Player"))
+            fireBallGroup.add(Fireball(self.posX, self.posY, 2, "Player", fireballSize))
         elif keyPressed == pygame.K_DOWN:
-            fireBallGroup.add(Fireball(self.posX, self.posY, 3, "Player"))
+            fireBallGroup.add(Fireball(self.posX, self.posY, 3, "Player", fireballSize))
         return fireBallGroup
 
     def hurt(self):

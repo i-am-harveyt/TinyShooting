@@ -4,9 +4,9 @@ RED = (255, 0, 0)
 YELLOW = (0, 255, 255)
 
 class Fireball(pygame.sprite.Sprite):
-    def __init__(self, posX, posY, direction, shootFrom):
+    def __init__(self, posX, posY, direction, shootFrom, fireballSize):
         super().__init__()
-        self.size = (10, 10)
+        self.size = (fireballSize, fireballSize)
         self.posX = posX
         self.posY = posY
         self.direction = direction
@@ -21,13 +21,13 @@ class Fireball(pygame.sprite.Sprite):
 
     def fly(self, fireBallGroup, WIDTH, HEIGHT):
         if self.direction == 0:  # right
-            self.posX += 7
+            self.posX += 40
         if self.direction == 1:  # up
-            self.posY -= 7
+            self.posY -= 40
         if self.direction == 2:  # left
-            self.posX -= 7
+            self.posX -= 40
         if self.direction == 3:  # down
-            self.posY += 7
+            self.posY += 40
         self.rect.center = (self.posX, self.posY)
         return self.distroy(fireBallGroup, WIDTH, HEIGHT)
 

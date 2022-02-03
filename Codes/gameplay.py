@@ -3,19 +3,21 @@ from Codes.Player import Player
 from Codes.Foe import Foe
 
 
-def game_play(SCREEN, WIDTH, HEIGHT):
+def game_play(
+    WINDOW, SCREEN, WINDOW_WIDTH, WINDOW_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT):
 
     # use this to block events
     events = pygame.event.get()
     del events
 
     BLACK = (25, 25, 25)
+    playerSize, foeSize, fireballSize = 50, 50, 30
 
-    player = Player(posX=50, posY=20+HEIGHT//2)
+    player = Player(posX=50, posY=20+SCREEN_HEIGHT//2, playerSize=playerSize)
     playerGroup = pygame.sprite.Group()
     playerGroup.add(player)
 
-    foe = Foe(posX=WIDTH-50, posY=20+HEIGHT//2)
+    foe = Foe(posX=SCREEN_WIDTH-50, posY=20+SCREEN_HEIGHT//2, foeSize=foeSize)
     foeGroup = pygame.sprite.Group()
     foeGroup.add(foe)
 
@@ -43,16 +45,18 @@ def game_play(SCREEN, WIDTH, HEIGHT):
                     running = False
                 elif event.key in shootingKey:
                     fireBallGroup = player.attack(
-                        keyPressed=event.key, fireBallGroup=fireBallGroup)
+                        keyPressed=event.key, 
+                        fireBallGroup=fireBallGroup,
+                        fireballSize=fireballSize)
 
         # detect player's movement
         keyPressed = pygame.key.get_pressed()
-        player.move(keyPressed, WIDTH, HEIGHT)
+        player.move(keyPressed, SCREEN_WIDTH, SCREEN_HEIGHT)
 
         # detect valid attack
         if len(fireBallGroup) > 0:
             for fireball in fireBallGroup:
-                fireBallGroup = fireball.fly(fireBallGroup, WIDTH, HEIGHT)
+                fireBallGroup = fireball.fly(fireBallGroup, SCREEN_WIDTH, SCREEN_HEIGHT)
                 if pygame.sprite.collide_rect(fireball, player) and\
                     fireball.shootFrom != "Player":
                     player.hurtTime = gameCLOCK.get_time()
@@ -81,7 +85,7 @@ def game_play(SCREEN, WIDTH, HEIGHT):
         for enemy in foeGroup:
             enemy.move(player)
             fireBallGroup, foeCurrent = enemy.detectAttack(
-                fireBallGroup, foeCurrent, player)
+                fireBallGroup, foeCurrent, player, fireballSize)
 
 
         # get time
@@ -103,12 +107,16 @@ def game_play(SCREEN, WIDTH, HEIGHT):
                 SCREEN.blit(emptyHeart, (0+20*i, 0))
         for i in range(foe.maxHealth):
             if i <= foe.health-1:
-                SCREEN.blit(heart, (WIDTH-20*foe.maxHealth+20*i, 0))
+                SCREEN.blit(heart, (SCREEN_WIDTH-20*foe.maxHealth+20*i, 0))
             else:
-                SCREEN.blit(emptyHeart, (WIDTH-20*foe.maxHealth+20*i, 0))
+                SCREEN.blit(emptyHeart, (SCREEN_WIDTH-20*foe.maxHealth+20*i, 0))
         playerGroup.draw(SCREEN)
         foeGroup.draw(SCREEN)
         fireBallGroup.draw(SCREEN)
+        WINDOW.blit(
+            pygame.transform.scale(SCREEN, (WINDOW_WIDTH, WINDOW_HEIGHT)),
+            (0, 0)
+        )
         gameCLOCK.tick(120)
 
     if player.health <= 0:
