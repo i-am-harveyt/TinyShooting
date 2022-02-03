@@ -1,5 +1,5 @@
 import pygame
-from Fireball import Fireball
+from Codes.Fireball import Fireball
 
 WHITE = (255, 255, 255)
 RED = (255, 0, 0)

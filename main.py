@@ -1,5 +1,5 @@
 import pygame
-from gameplay import game_play
+from Codes.gameplay import game_play
 
 WIDTH, HEIGHT = 800, 600
 BLACK = (25, 25, 25)

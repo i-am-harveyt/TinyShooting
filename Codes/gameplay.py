@@ -1,6 +1,6 @@
 import pygame
-from Player import Player
-from Foe import Foe
+from Codes.Player import Player
+from Codes.Foe import Foe
 
 
 def game_play(SCREEN, WIDTH, HEIGHT):
