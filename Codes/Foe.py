@@ -2,10 +2,6 @@ import pygame
 from Codes.Fireball import Fireball
 from Codes.Settings import *
 
-WHITE = (255, 255, 255)
-GREEN = (0, 255, 0)
-RED = (255, 0, 0)
-
 
 class Foe(pygame.sprite.Sprite):
     def __init__(self, posX, posY):

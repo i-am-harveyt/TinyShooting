@@ -10,10 +10,6 @@ def game_play(WINDOW, SCREEN):
     events = pygame.event.get()
     del events
 
-    BLACK = (25, 25, 25)
-    RED = (220, 0, 0)
-    WHITE = (220, 220, 220)
-
     playerSize, foeSize, fireballSize = 50, 50, 30
     healthBarWidth = 200
     healthBarHeight = 50

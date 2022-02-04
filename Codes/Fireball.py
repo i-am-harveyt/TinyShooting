@@ -1,8 +1,6 @@
 import pygame
 from Codes.Settings import *
 
-RED = (255, 0, 0)
-YELLOW = (0, 255, 255)
 
 class Fireball(pygame.sprite.Sprite):
     def __init__(self, posX, posY, direction, shootFrom):
