@@ -98,7 +98,7 @@ def game_play(WINDOW, SCREEN):
         SCREEN.fill(BLACK)
 
         # render the health bar
-        pygame.draw.rect(SCREEN, WHITE, pygame.Rect(50, 0, healthBarWidth, healthBarHeight), 0)
+        pygame.draw.rect(SCREEN, WHITE, pygame.Rect(0, 0, healthBarWidth, healthBarHeight), 0)
         pygame.draw.rect(SCREEN, RED, pygame.Rect(
             50, 0, healthBarWidth*player.health//player.maxHealth, healthBarHeight), 0)
 
