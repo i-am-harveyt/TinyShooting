@@ -120,7 +120,7 @@ def game_play(
             pygame.transform.scale(SCREEN, (WINDOW_WIDTH, WINDOW_HEIGHT)),
             (0, 0)
         )
-        gameCLOCK.tick(150)
+        gameCLOCK.tick(120)
 
     if player.health <= 0:
         return False
