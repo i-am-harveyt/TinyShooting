@@ -5,7 +5,10 @@ from Codes.countdown import countdown
 from Codes.win_or_lose import win_or_lose
 
 pygame.init()
-WINDOW = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+WINDOW = pygame.display.set_mode(
+        (WINDOW_WIDTH, WINDOW_HEIGHT),
+        # pygame.HWSURFACE|pygame.DOUBLEBUF|pygame.RESIZABLE
+        )
 SCREEN = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("TinyShooting!")
 CLOCK = pygame.time.Clock()

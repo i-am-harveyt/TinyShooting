@@ -100,19 +100,19 @@ def game_play(WINDOW, SCREEN):
         # render the health bar
         pygame.draw.rect(SCREEN, WHITE, pygame.Rect(50, 0, healthBarWidth, healthBarHeight), 0)
         pygame.draw.rect(SCREEN, RED, pygame.Rect(
-            50, 0, healthBarWidth*player.health//player.maxHealth, healthBarHeight), 0)
+            50, 0, healthBarWidth*player.health/player.maxHealth, healthBarHeight), 0)
 
         pygame.draw.rect(SCREEN, WHITE, pygame.Rect(
             SCREEN_WIDTH-healthBarWidth-50, 0, healthBarWidth, healthBarHeight), 0)
         pygame.draw.rect(SCREEN, RED, pygame.Rect(
             SCREEN_WIDTH-healthBarWidth-50, 0, 
-            healthBarWidth*foe.health//foe.maxHealth, healthBarHeight), 0)
+            healthBarWidth*foe.health/foe.maxHealth, healthBarHeight), 0)
 
         playerGroup.draw(SCREEN)
         foeGroup.draw(SCREEN)
         fireBallGroup.draw(SCREEN)
         WINDOW.blit(
-            pygame.transform.scale(SCREEN, (WINDOW_WIDTH, WINDOW_HEIGHT)),
+            pygame.transform.scale(SCREEN, WINDOW.get_rect().size),
             (0, 0)
         )
         gameCLOCK.tick(120)
