@@ -10,7 +10,7 @@ BLACK = (25, 25, 25)
 pygame.init()
 WINDOW = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 SCREEN = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("Shooting Game!")
+pygame.display.set_caption("TinyShooting!")
 CLOCK = pygame.time.Clock()
 TOPIC = pygame.image.load("Graphics/TOPIC.png").convert_alpha()
 win = False
