@@ -26,9 +26,6 @@ def game_play(
     foeGroup = pygame.sprite.Group()
     foeGroup.add(foe)
 
-    heart = pygame.image.load("Graphics/Heart.png").convert_alpha()
-    emptyHeart = pygame.image.load("Graphics/EmptyHeart.png").convert_alpha()
-
     fireBallGroup = pygame.sprite.Group()
 
     shootingKey = [pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_RIGHT]
