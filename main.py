@@ -22,6 +22,7 @@ if __name__ == "__main__":
                 if event.key == pygame.K_RETURN:
                     countdown(WINDOW)
                     win = game_play(WINDOW, SCREEN)
+                    pygame.time.delay(2000)
                     win_or_lose(WINDOW, win)
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()

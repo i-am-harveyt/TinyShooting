@@ -23,13 +23,13 @@ class Player(pygame.sprite.Sprite):
             if self.posY > 20 + playerSize//2:
                 self.posY -= 8
         if keyPressed[pygame.K_s]:
-            if self.posY < SCREEN_HEIGHT - playerSize//2:
+            if self.posY < SCREEN_HEIGHT - playerSize:
                 self.posY += 8
         if keyPressed[pygame.K_a]:
             if self.posX > playerSize//2:
                 self.posX -= 8
         if keyPressed[pygame.K_d]:
-            if self.posX < SCREEN_WIDTH - playerSize//2:
+            if self.posX < SCREEN_WIDTH - playerSize:
                 self.posX += 8
 
         self.rect.center = (self.posX, self.posY)
