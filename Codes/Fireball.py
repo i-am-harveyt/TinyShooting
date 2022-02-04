@@ -1,10 +1,11 @@
 import pygame
+from Codes.Settings import *
 
 RED = (255, 0, 0)
 YELLOW = (0, 255, 255)
 
 class Fireball(pygame.sprite.Sprite):
-    def __init__(self, posX, posY, direction, shootFrom, fireballSize):
+    def __init__(self, posX, posY, direction, shootFrom):
         super().__init__()
         self.size = (fireballSize, fireballSize)
         self.posX = posX
@@ -19,7 +20,7 @@ class Fireball(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = (self.posX, self.posY)
 
-    def fly(self, fireBallGroup, WIDTH, HEIGHT):
+    def fly(self, fireBallGroup):
         if self.direction == 0:  # right
             self.posX += 15
         if self.direction == 1:  # up
@@ -29,13 +30,13 @@ class Fireball(pygame.sprite.Sprite):
         if self.direction == 3:  # down
             self.posY += 15
         self.rect.center = (self.posX, self.posY)
-        return self.distroy(fireBallGroup, WIDTH, HEIGHT)
+        return self.distroy(fireBallGroup)
 
-    def distroy(self, fireBallGroup, WIDTH, HEIGHT):
-        if self.posX > WIDTH or self.posX < 0:
+    def distroy(self, fireBallGroup):
+        if self.posX > SCREEN_WIDTH or self.posX < 0:
             fireBallGroup.remove(self)
             self.kill()
-        elif self.posY > HEIGHT or self.posY < 0:
+        elif self.posY > SCREEN_HEIGHT or self.posY < 0:
             fireBallGroup.remove(self)
             self.kill()
 

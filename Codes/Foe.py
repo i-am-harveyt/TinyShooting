@@ -1,5 +1,6 @@
 import pygame
 from Codes.Fireball import Fireball
+from Codes.Settings import *
 
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
@@ -7,7 +8,7 @@ RED = (255, 0, 0)
 
 
 class Foe(pygame.sprite.Sprite):
-    def __init__(self, posX, posY, foeSize):
+    def __init__(self, posX, posY):
         super().__init__()
         self.size = (foeSize, foeSize)
         self.maxHealth = 5
@@ -33,22 +34,22 @@ class Foe(pygame.sprite.Sprite):
 
         self.rect.center = (self.posX, self.posY)
 
-    def attack(self, keyPressed, fireBallGroup, fireballSize):
+    def attack(self, keyPressed, fireBallGroup):
         if keyPressed == pygame.K_RIGHT:
             fireBallGroup.add(
-                Fireball(self.posX, self.posY, 0, "Foe", fireballSize))
+                Fireball(self.posX, self.posY, 0, "Foe"))
         elif keyPressed == pygame.K_UP:
             fireBallGroup.add(
-                Fireball(self.posX, self.posY, 1, "Foe", fireballSize))
+                Fireball(self.posX, self.posY, 1, "Foe"))
         elif keyPressed == pygame.K_LEFT:
             fireBallGroup.add(
-                Fireball(self.posX, self.posY, 2, "Foe", fireballSize))
+                Fireball(self.posX, self.posY, 2, "Foe"))
         elif keyPressed == pygame.K_DOWN:
             fireBallGroup.add(
-                Fireball(self.posX, self.posY, 3, "Foe", fireballSize))
+                Fireball(self.posX, self.posY, 3, "Foe"))
         return fireBallGroup
 
-    def detectAttack(self, fireBallGroup, selfCurrent, player, fireballSize):
+    def detectAttack(self, fireBallGroup, selfCurrent, player):
         # basic foe attack mode
         selfDetectRange = 30
         selfCurrent += 1
@@ -58,20 +59,16 @@ class Foe(pygame.sprite.Sprite):
                 selfCurrent = 0
                 if player.posX < self.posX:
                     fireBallGroup = self.attack(
-                        keyPressed=pygame.K_LEFT, fireBallGroup=fireBallGroup, 
-                        fireballSize=fireballSize)
+                        keyPressed=pygame.K_LEFT, fireBallGroup=fireBallGroup)
                 elif player.posX > self.posX:
                     fireBallGroup = self.attack(
-                        keyPressed=pygame.K_RIGHT, fireBallGroup=fireBallGroup, 
-                        fireballSize=fireballSize)
+                        keyPressed=pygame.K_RIGHT, fireBallGroup=fireBallGroup)
                 elif player.posY < self.posY:
                     fireBallGroup = self.attack(
-                        keyPressed=pygame.K_DOWN, fireBallGroup=fireBallGroup, 
-                        fireballSize=fireballSize)
+                        keyPressed=pygame.K_DOWN, fireBallGroup=fireBallGroup)
                 elif player.posY > self.posY:
                     fireBallGroup = self.attack(
-                        keyPressed=pygame.K_UP, fireBallGroup=fireBallGroup, 
-                        fireballSize=fireballSize)
+                        keyPressed=pygame.K_UP, fireBallGroup=fireBallGroup)
     
 
         return fireBallGroup, selfCurrent

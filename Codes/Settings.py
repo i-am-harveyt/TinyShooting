@@ -1,0 +1,7 @@
+WINDOW_WIDTH, WINDOW_HEIGHT = 1200, 675
+SCREEN_WIDTH, SCREEN_HEIGHT = 1920, 1080
+BLACK = (25, 25, 25)
+
+playerSize = 50
+foeSize = 50
+fireballSize = 30

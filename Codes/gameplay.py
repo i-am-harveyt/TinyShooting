@@ -1,10 +1,10 @@
 import pygame
+from Codes.Settings import *
 from Codes.Player import Player
 from Codes.Foe import Foe
 
 
-def game_play(
-    WINDOW, SCREEN, WINDOW_WIDTH, WINDOW_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT):
+def game_play(WINDOW, SCREEN):
 
     # use this to block events
     events = pygame.event.get()
@@ -18,11 +18,11 @@ def game_play(
     healthBarWidth = 200
     healthBarHeight = 50
 
-    player = Player(posX=50, posY=50+SCREEN_HEIGHT//2, playerSize=playerSize)
+    player = Player(posX=50, posY=50+SCREEN_HEIGHT//2)
     playerGroup = pygame.sprite.Group()
     playerGroup.add(player)
 
-    foe = Foe(posX=SCREEN_WIDTH-50, posY=50+SCREEN_HEIGHT//2, foeSize=foeSize)
+    foe = Foe(posX=SCREEN_WIDTH-50, posY=50+SCREEN_HEIGHT//2)
     foeGroup = pygame.sprite.Group()
     foeGroup.add(foe)
 
@@ -48,17 +48,16 @@ def game_play(
                 elif event.key in shootingKey:
                     fireBallGroup = player.attack(
                         keyPressed=event.key, 
-                        fireBallGroup=fireBallGroup,
-                        fireballSize=fireballSize)
+                        fireBallGroup=fireBallGroup)
 
         # detect player's movement
         keyPressed = pygame.key.get_pressed()
-        player.move(keyPressed, SCREEN_WIDTH, SCREEN_HEIGHT)
+        player.move(keyPressed)
 
         # detect valid attack
         if len(fireBallGroup) > 0:
             for fireball in fireBallGroup:
-                fireBallGroup = fireball.fly(fireBallGroup, SCREEN_WIDTH, SCREEN_HEIGHT)
+                fireBallGroup = fireball.fly(fireBallGroup)
                 if pygame.sprite.collide_rect(fireball, player) and\
                     fireball.shootFrom != "Player":
                     player.hurtTime = gameCLOCK.get_time()
@@ -87,7 +86,7 @@ def game_play(
         for enemy in foeGroup:
             enemy.move(player)
             fireBallGroup, foeCurrent = enemy.detectAttack(
-                fireBallGroup, foeCurrent, player, fireballSize)
+                fireBallGroup, foeCurrent, player)
 
 
         # get time

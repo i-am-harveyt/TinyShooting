@@ -1,12 +1,13 @@
 import pygame
 from Codes.Fireball import Fireball
+from Codes.Settings import *
 
 WHITE = (255, 255, 255)
 RED = (255, 0, 0)
 
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, posX, posY, playerSize):
+    def __init__(self, posX, posY):
         super().__init__()
         self.size = (playerSize, playerSize)
         self.maxHealth = 5
@@ -20,31 +21,31 @@ class Player(pygame.sprite.Sprite):
         self.hurtTime = 0
 
 
-    def move(self, keyPressed, WIDTH, HEIGHT):
+    def move(self, keyPressed):
         if keyPressed[pygame.K_w]:
-            if self.posY > 20 + 15:
+            if self.posY > 20 + playerSize//2:
                 self.posY -= 8
         if keyPressed[pygame.K_s]:
-            if self.posY < HEIGHT - 15:
+            if self.posY < SCREEN_HEIGHT - playerSize//2:
                 self.posY += 8
         if keyPressed[pygame.K_a]:
-            if self.posX > 15:
+            if self.posX > playerSize//2:
                 self.posX -= 8
         if keyPressed[pygame.K_d]:
-            if self.posX < WIDTH - 15:
+            if self.posX < SCREEN_WIDTH - playerSize//2:
                 self.posX += 8
 
         self.rect.center = (self.posX, self.posY)
 
-    def attack(self, keyPressed, fireBallGroup, fireballSize):
+    def attack(self, keyPressed, fireBallGroup):
         if keyPressed == pygame.K_RIGHT:
-            fireBallGroup.add(Fireball(self.posX, self.posY, 0, "Player", fireballSize))
+            fireBallGroup.add(Fireball(self.posX, self.posY, 0, "Player"))
         elif keyPressed == pygame.K_UP:
-            fireBallGroup.add(Fireball(self.posX, self.posY, 1, "Player", fireballSize))
+            fireBallGroup.add(Fireball(self.posX, self.posY, 1, "Player"))
         elif keyPressed == pygame.K_LEFT:
-            fireBallGroup.add(Fireball(self.posX, self.posY, 2, "Player", fireballSize))
+            fireBallGroup.add(Fireball(self.posX, self.posY, 2, "Player"))
         elif keyPressed == pygame.K_DOWN:
-            fireBallGroup.add(Fireball(self.posX, self.posY, 3, "Player", fireballSize))
+            fireBallGroup.add(Fireball(self.posX, self.posY, 3, "Player"))
         return fireBallGroup
 
     def hurt(self):
