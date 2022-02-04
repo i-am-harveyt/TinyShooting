@@ -87,10 +87,11 @@ def game_play(WINDOW, SCREEN):
 
         # get time
         currentTime = gameCLOCK.get_time()
-        if currentTime - player.hurtTime >= 0.2:
+        if currentTime - player.hurtTime >= 1:
+            print(currentTime, player.hurtTime)
             player.renew()
         for enemy in foeGroup:
-            if currentTime - enemy.hurtTime >= 0.2:
+            if currentTime - enemy.hurtTime >= 1:
                 enemy.renew()
 
         # deal with the rendering
